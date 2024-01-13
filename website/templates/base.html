@@ -13,30 +13,37 @@
 <body>
     <!-- NAV BAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark-subtle">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbar"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link text-primary" id="home" href="/">Home</a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbar"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+            <div class="navbar-nav">
+            <a class="nav-item nav-link text-primary" id="home" href="/">Home</a>
+            
+            </div>
         </div>
-      </div>
     </nav>
-
-    <!-- CHIPS -->
-    <div id="tags" class="m-3">
-      {% for i in ingredients %}
-      <div class="d-inline-block border border-dark rounded-pill fitcontent px-2 py-1 shadow-sm">
-        <span>{{ i }}</span>
-        <button class="bg-transparent border-0" type="button" aria-label="Remove tag"><i class="fa-solid fa-x fa-xs"></i></button>
-      </div>
-      {% endfor %}
-    </div>
+    <section class="m-3">
+        <form id="user-input" class="d-flex">
+            <input type="text" id="search-box" class="" style="outline:none">
+            <button type="button" class="rounded input-btn">Add ingredient</button>
+        </form>
+        <button type="button" class="rounded input-btn">Find recipes!</button>
+        <!-- CHIPS -->
+        <div id="chips" class="my-3">
+            {% for i in ingredients%}
+            <div class="d-inline-block border border-dark rounded-pill fitcontent px-2 py-1 shadow-sm">
+                <span>{{ i }}</span>
+                <button class="bg-transparent border-0" type="button" aria-label="Remove tag"><i class="fa-solid fa-x fa-xs"></i></button>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
 
     <!-- RESULTS -->
     {% block content %} {% endblock %}
