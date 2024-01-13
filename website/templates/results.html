@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results{% endblock %}
+{% block content %}
+<div class="row row-cols-1 row-cols-md-4">
+{% for recipe in display %}
+    <div class="col mb-4">
+        <div class="card bg-light m-3">
+            <div class="card-body">
+                <h3 class="card-title">{{recipe[0]}}</h1>
+                <ul class="list-group list-group-flush">
+                    <h5 class="card-text">Ingredients:</h2>
+                    <li class="list-group-item bg-light">
+                        {% for i in recipe[1] %}
+                            <div class="card-text">{{i}}</div>
+                        {% endfor %}
+                    </li>
+                    <h5 class="card-text">Steps:</h2>
+                    <li class="list-group-item bg-light">
+                        {% for s in recipe[2] %}
+                            <div class="card-text">{{s}}</div>
+                        {% endfor %}
+                    </li>
+                </ul>
+                <a href="http://{{recipe[3]}}" class="card-link">Recipe link</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
