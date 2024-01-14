@@ -28,12 +28,30 @@
             </div>
         </div>
     </nav>
+    
     <section class="m-3">
-        <form id="user-input" class="d-flex">
-            <input type="text" id="search-box" class="" style="outline:none">
-            <button type="button" class="rounded input-btn">Add ingredient</button>
+        <form id="user-input" class="input-group mb-3" method="post">
+            <label for="search">What ingredients do you have?</label>
+            <br>
+            <input type="text" name="search" placeholder="egg, sugar, beef, ..." class="m-2">
+            <!-- <button type="button" class="btn btn-success">Add ingredient</button> -->
+            <button type="submit" class="btn btn-danger">Find recipes!</button>
         </form>
-        <button type="button" class="rounded input-btn">Find recipes!</button>
+
+        <!-- <form class="input-group" id="user-input" method="post">
+            <label for="search">What ingredients do you have?</label>
+            <br>
+            <select class="custom-select" id="chosenIngredient" name="search">
+              <option selected>Choose ingredients...</option>
+              {% for i in allIngredients %}
+                <option value="{{i}}">i</option>
+              {% endfor %}
+            </select>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit">Find Recipes!</button>
+            </div>
+        </form> -->
+
         <!-- CHIPS -->
         <div id="chips" class="my-3">
             {% for i in ingredients%}
