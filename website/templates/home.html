@@ -7,12 +7,12 @@
     {% for recipe in recipes %}
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">{{recipe[0]}}</h5>
+            <h5 class="card-title">{{recipe.name}}</h5>
             <h5 class="card-text">Ingredients:</h2>
-            {% for i in recipe[1] %}<p class="card-text">{{i}}</p>{% endfor %}
+            {% for i in recipe.ingredients %}<p class="card-text">{{i}}</p>{% endfor %}
             <h5 class="card-text">Steps:</h2>
-            {% for i in range(recipe[2]|length) %}<p class="card-text">{{i+1}}. {{recipe[2][i]}}</p>{% endfor %}
-            <a href="http://{{recipe[3]}}" class="card-link">Recipe link</a>
+            {% for i in range(recipe.directions|length) %}<p class="card-text">{{i+1}}. {{recipe.directions[i]}}</p>{% endfor %}
+            <a href="http://{{recipe.NER}}" class="card-link">Recipe link</a>
         </div>
     </div>
     {% endfor %}

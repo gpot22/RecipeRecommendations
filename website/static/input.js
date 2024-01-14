@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let ingredients = sessionStorage.getItem("ingredients");
         $.ajax({
             type: "POST",
-            url: "/results",
+            url: "/",
             data: JSON.stringify(ingredients),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
