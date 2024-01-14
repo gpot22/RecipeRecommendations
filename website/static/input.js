@@ -1,40 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let inputBox = document.querySelector('#search')  // get input box element
-    let addIngredientBtn = document.querySelector('#add-ingredient')  // get add ingredient button element
-    let pageLogo = document.querySelector('#page-logo')
-    // Add ingredient on button press
-    addIngredientBtn.addEventListener('click', () => {
-        addIngredient(inputBox)
-        // animate logo
-        pageLogo.classList.remove('anim')
-        void pageLogo.offsetWidth;
-        pageLogo.classList.add('anim')
-    })
-
-    // Add ingredient by clicking enter on keyboard
-    inputBox.addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          addIngredientBtn.click();
-        }
-    })
 
     // update chips from ingredients saved in session storage upon refreshing page
     let ingredientList = getIngredientList()
     ingredientList.forEach((ingredient) => {
         addIngredientChip(ingredient)
     })
-    // send ingredients from sessionStorage to backend on button press
-    document.getElementById('submit').onclick = function() {
-        let ingredients = sessionStorage.getItem("ingredients");
-        $.ajax({
-            type: "POST",
-            url: "/",
-            data: JSON.stringify(ingredients),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-          });
-     };
+    resetEventListeners() // set all necessary event listeners
 })
 
 // get selected ingredients from session storage
@@ -100,4 +71,51 @@ function removeIngredient(chip) {
 
 function removeIngredientChip(chip) {
     chip.remove()
+}
+
+function resetEventListeners() {
+    let inputBox = document.querySelector('#search')  // get input box element
+    let addIngredientBtn = document.querySelector('#add-ingredient')  // get add ingredient button element
+    let pageLogo = document.querySelector('#page-logo')
+    // Add ingredient on button press
+    addIngredientBtn.addEventListener('click', () => {
+        addIngredient(inputBox)
+        // animate logo
+        pageLogo.classList.remove('anim')
+        void pageLogo.offsetWidth;
+        pageLogo.classList.add('anim')
+    })
+
+    // Add ingredient by clicking enter on keyboard
+    inputBox.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          addIngredientBtn.click();
+        }
+    })
+     // send ingredients from sessionStorage to backend on button press
+     document.getElementById('submit').onclick = function() {
+        let resultsDiv = document.getElementById('results')
+        let ingredients = sessionStorage.getItem("ingredients");
+        console.log($.ajax({
+            type: "POST",
+            url: "/",
+            data: JSON.stringify(ingredients),
+            contentType: "application/json; charset=utf-8",
+            // dataType: "json",
+            success: function(text) {
+                // alert(text)
+                document.documentElement.innerHTML = text
+                let chips = document.querySelector('#chips')
+                chips.childNodes.forEach(e => {
+                    if(e.nodeName != '#text' && e.nodeName != '#comment'){
+                        console.log(e)
+                        btn = e.querySelector('button')
+                        setupRemoveChipBtn(btn)
+                    }
+                    resetEventListeners()
+                })
+            }
+          }));
+     };
 }

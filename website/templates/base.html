@@ -46,6 +46,12 @@
         <!-- CHIPS -->
         <div id="chips">
             <!-- chips are dynamically added through input.js-->
+            {% for i in ingredients%}  <!-- re-creates chips after page reset from post request--> 
+            <div class="chip">
+                <span>{{i}}</span>
+                <button class="chip-x" aria-label="Remove tag"><i class="fa-solid fa-x fa-xs"></i></button>
+            </div>
+            {% endfor %}
         </div>
         <button type="button" id="submit" class="btn btn-primary">Find recipes!</button>
     </section>
