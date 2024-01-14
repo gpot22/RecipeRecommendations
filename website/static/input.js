@@ -15,19 +15,25 @@ function getIngredientList() {
 
 function addIngredient(inputBox) {
     // validate input
-    let ingredient = inputBox.value.trim()
-    if(!ingredient) return; 
+    let ingredients = inputBox.value.split(',')
+    ingredients = ingredients.map(function(s) { 
+        s = s.trim(); 
+        return s;
+    });
+    if(ingredients == ['']) return alert('No ingredients received!');
     let ingredientList = getIngredientList();
-    if(ingredientList.includes(ingredient)){
-        return alert('Ingredient already listed!')
-    } 
     
+    ingredients.map(function(e) {
+        if (!ingredientList.includes(e)) {
+            ingredientList.push(e);
+            addIngredientChip(e);
+        }
+    })
     // add input to session storage ingredient list
-    ingredientList.push(ingredient)
-    sessionStorage.setItem("ingredients", JSON.stringify(ingredientList))
+    // ingredientList.push(ingredient)
+    sessionStorage.setItem("ingredients", JSON.stringify(ingredientList));
     // reset input box
-    inputBox.value = ''
-    addIngredientChip(ingredient)
+    inputBox.value = '';
 };
 
 function addIngredientChip(ingredient) {
@@ -99,25 +105,30 @@ function resetEventListeners() {
      document.getElementById('submit').onclick = function() {
         let resultsDiv = document.getElementById('results')
         let ingredients = sessionStorage.getItem("ingredients");
-        console.log($.ajax({
-            type: "POST",
-            url: "/",
-            data: JSON.stringify(ingredients),
-            contentType: "application/json; charset=utf-8",
-            // dataType: "json",
-            success: function(text) {
-                // alert(text)
-                document.documentElement.innerHTML = text
-                let chips = document.querySelector('#chips')
-                chips.childNodes.forEach(e => {
-                    if(e.nodeName != '#text' && e.nodeName != '#comment'){
-                        console.log(e)
-                        btn = e.querySelector('button')
-                        setupRemoveChipBtn(btn)
-                    }
-                    resetEventListeners()
-                })
-            }
-          }));
+        console.log(ingredients)
+        if (!(ingredients == [])) {
+            console.log($.ajax({
+                type: "POST",
+                url: "/",
+                data: JSON.stringify(ingredients),
+                contentType: "application/json; charset=utf-8",
+                // dataType: "json",
+                success: function(text) {
+                    // alert(text)
+                    document.documentElement.innerHTML = text
+                    let chips = document.querySelector('#chips')
+                    chips.childNodes.forEach(e => {
+                        if(e.nodeName != '#text' && e.nodeName != '#comment'){
+                            console.log(e)
+                            btn = e.querySelector('button')
+                            setupRemoveChipBtn(btn)
+                        }
+                        resetEventListeners()
+                    })
+                }
+            }));
+        } else {
+            alert("Please add at least one ingredient.")
+        }
      };
 }
