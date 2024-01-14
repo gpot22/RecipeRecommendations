@@ -1,9 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     let inputBox = document.querySelector('#search')  // get input box element
     let addIngredientBtn = document.querySelector('#add-ingredient')  // get add ingredient button element
-    
+    // Add ingredient on button press
     addIngredientBtn.addEventListener('click', () => {
         addIngredient(inputBox)
+    })
+
+    // Add ingredient by clicking enter on keyboard
+    inputBox.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          addIngredientBtn.click();
+        }
     })
 
     // update chips from ingredients saved in session storage upon refreshing page
@@ -11,6 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
     ingredientList.forEach((ingredient) => {
         addIngredientChip(ingredient)
     })
+    // send ingredients from sessionStorage to backend on button press
+    document.getElementById('submit').onclick = function() {
+        let ingredients = sessionStorage.getItem("ingredients");
+        $.ajax({
+            type: "POST",
+            url: "/results",
+            data: JSON.stringify(ingredients),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+          });
+     };
 })
 
 // get selected ingredients from session storage
@@ -77,14 +96,3 @@ function removeIngredient(chip) {
 function removeIngredientChip(chip) {
     chip.remove()
 }
-
-document.getElementById('submit').onclick = function() {
-    let ingredients = sessionStorage.getItem("ingredients");
-    $.ajax({
-        type: "POST",
-        url: "/results",
-        data: JSON.stringify(ingredients),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-      });
- };

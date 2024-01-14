@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Page Title{% endblock %}</title>
-    <!-- <script src="website\static\script.js"></script>  -->
     <link rel="stylesheet" href="../static/styles.css">
     <!-- font awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -44,18 +43,11 @@
                 <button type="button" id="add-ingredient" class="btn btn-success">Add ingredient</button>
             </div>
         </div>
-        
-        <button type="button" id="submit" class="btn btn-danger">Find recipes!</button>
-        
         <!-- CHIPS -->
         <div id="chips">
-            {% for i in ingredients%}
-            <div class="chip">
-                <span>{{ i }}</span>
-                <button class="chip-x" aria-label="Remove tag"><i class="fa-solid fa-x fa-xs"></i></button>
-            </div>
-            {% endfor %}
+            <!-- chips are dynamically added through input.js-->
         </div>
+        <button type="button" id="submit" class="btn btn-danger">Find recipes!</button>
     </section>
 
     <!-- RESULTS -->
