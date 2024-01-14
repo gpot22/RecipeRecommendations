@@ -62,7 +62,6 @@ function removeIngredient(chip) {
     // remove ingredient from session storage array
     let ingredientList = getIngredientList()
     let idx = ingredientList.indexOf(ingredient)
-    console.log(chip)
     if (idx > -1) { // only splice of found value; if not, remove chip and assume it no longer exists in storage
         ingredientList.splice(idx, 1)
     }
@@ -98,7 +97,7 @@ function resetEventListeners() {
      // send ingredients from sessionStorage to backend on button press
      document.getElementById('submit').onclick = function() {
         let ingredients = sessionStorage.getItem("ingredients");
-        console.log($.ajax({
+        $.ajax({
             type: "POST",
             url: "/",
             data: JSON.stringify(ingredients),
@@ -118,6 +117,6 @@ function resetEventListeners() {
                 // reset event listeners
                 resetEventListeners()
             }
-          }));
+          });
      };
 }
