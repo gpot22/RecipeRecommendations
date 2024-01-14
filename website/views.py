@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, flash
+from src import supabase
 
 views = Blueprint('views', __name__)
 
