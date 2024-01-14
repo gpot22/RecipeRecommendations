@@ -23,7 +23,7 @@
 }
 
 #chips {
-    margin: 6px;
+    margin: 10px 6px;
     display: flex;
     gap: 6px;
     color: white;
@@ -53,12 +53,13 @@
     margin: 0px 50px;
     display: flex;
     flex-flow: row wrap;
-    /* justify-content: space-between; */
-    align-content: stretch;
+    /* align-content: stretch; */
+    align-items: flex-start;
     gap: 10px;
 }
 
 .card {
+    max-width: 45vw;
     flex-grow: 1;
 }
 
