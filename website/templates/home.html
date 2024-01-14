@@ -3,18 +3,22 @@
 {% block title %} Re:Recipes {% endblock %}
 
 {% block content %}
-<div class="results">
-    {% for recipe in recipes %}
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">{{recipe[0]}}</h5>
-            <h5 class="card-text">Ingredients:</h2>
-            {% for i in recipe[1] %}<p class="card-text">{{i}}</p>{% endfor %}
-            <h5 class="card-text">Steps:</h2>
-            {% for i in range(recipe[2]|length) %}<p class="card-text">{{i+1}}. {{recipe[2][i]}}</p>{% endfor %}
-            <a href="http://{{recipe[3]}}" class="card-link">Recipe link</a>
+    <div class="welcome">Welcome!<i class="fa-solid fa-carrot ms-2"></i></div>
+    
+    <section class="search-area">
+        <!-- Input Ingredients -->
+        <div class="input-group search-form">
+            <label for="search" class="question-label">What ingredients do you have?</label>
+            <br>
+            <input type="text" class="form-control" name="search" id="search" placeholder="egg, sugar, beef, ...">
+            <div class="ms-2">
+                <button type="button" id="add-ingredient" class="btn btn-success">Add ingredient</button>
+            </div>
         </div>
-    </div>
-    {% endfor %}
-</div>
+        <!-- CHIPS -->
+        <div id="chips">
+            <!-- chips are dynamically added through input.js-->
+        </div>
+        <button type="button" id="submit" class="btn btn-primary">Find recipes!</button>
+    </section>
 {% endblock %}

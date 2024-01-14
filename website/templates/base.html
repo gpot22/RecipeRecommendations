@@ -30,26 +30,6 @@
 
     <div class="padd"></div>
 
-    <div class="welcome">Welcome!<i class="fa-solid fa-carrot ms-2"></i></div>
-    
-    
-    <section class="search-area">
-        <!-- Input Ingredients -->
-        <div class="input-group search-form">
-            <label for="search" class="question-label">What ingredients do you have?</label>
-            <br>
-            <input type="text" class="form-control" name="search" id="search" placeholder="egg, sugar, beef, ...">
-            <div class="ms-2">
-                <button type="button" id="add-ingredient" class="btn btn-success">Add ingredient</button>
-            </div>
-        </div>
-        <!-- CHIPS -->
-        <div id="chips">
-            <!-- chips are dynamically added through input.js-->
-        </div>
-        <button type="button" id="submit" class="btn btn-primary">Find recipes!</button>
-    </section>
-
     <!-- RESULTS -->
     {% block content %} {% endblock %}
 
