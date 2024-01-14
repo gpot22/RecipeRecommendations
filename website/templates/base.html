@@ -15,7 +15,7 @@
 <body class="ly-bg">
     <!-- NAV BAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand m-3" href="#">Re:Recipes</a>
+        <a class="navbar-brand m-3" href="#">Re:Recipes <i class="fa-solid fa-carrot"></i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,7 +30,7 @@
 
     <div class="padd"></div>
 
-    <div class="welcome">Welcome!</div>
+    <div class="welcome">Welcome!<i class="fa-solid fa-carrot ms-2"></i></div>
     
     
     <section class="search-area">
@@ -39,7 +39,7 @@
             <label for="search" class="question-label">What ingredients do you have?</label>
             <br>
             <input type="text" class="form-control" name="search" id="search" placeholder="egg, sugar, beef, ...">
-            <div class="input-group-append">
+            <div class="ms-2">
                 <button type="button" id="add-ingredient" class="btn btn-success">Add ingredient</button>
             </div>
         </div>
@@ -47,7 +47,7 @@
         <div id="chips">
             <!-- chips are dynamically added through input.js-->
         </div>
-        <button type="button" id="submit" class="btn btn-danger">Find recipes!</button>
+        <button type="button" id="submit" class="btn btn-primary">Find recipes!</button>
     </section>
 
     <!-- RESULTS -->
