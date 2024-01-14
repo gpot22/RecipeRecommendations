@@ -1,3 +1,67 @@
-.fitcontent{
-    width: fit-content
+.welcome {
+    font-size: 52px;
+    padding: 30px 50px;
+    font-weight: bold;
+    color: rgb(10, 10, 50);
+}
+
+.ly-bg {
+    background-color: rgb(255, 225, 190)
+}
+
+.search-area {
+    display: flex;
+    flex-flow: column;
+    margin: 0px 50px;
+}
+
+.question-label {
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#chips {
+    margin: 6px;
+    display: flex;
+    gap: 6px;
+    color: white;
+}
+
+.chip {
+    background-color: rgb(10, 10, 50);
+    border-radius: 10px;
+    justify-content: center;
+    height: 35px;
+    padding: 4px 6px;
+}
+
+.chip-x {
+    border: none;
+    background-color: transparent;
+    color: white;
+    vertical-align: middle;
+}
+
+.chip-x:hover {
+    color: lightcoral;
+}
+
+.results {
+    box-sizing: border-box;
+    margin: 0px 50px;
+    display: flex;
+    flex-flow: row wrap;
+    /* justify-content: space-between; */
+    align-content: stretch;
+    gap: 10px;
+}
+
+.card {
+    flex-grow: 1;
+}
+
+.padd {
+    height: 100px;
 }
