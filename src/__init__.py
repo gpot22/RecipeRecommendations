@@ -5,4 +5,6 @@ key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlj
 supabase: Client = create_client(url, key)
 
 response = supabase.table("recipes").select("*").execute()
-print(response)
+
+# Grab a specific food object based off name:
+food = supabase.table("recipes").select('*').eq('name', 'Swedish Baked Beans').execute() #.eq('name', 'user_input')
