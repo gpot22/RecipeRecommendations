@@ -68,7 +68,6 @@ function removeIngredient(chip) {
     // remove ingredient from session storage array
     let ingredientList = getIngredientList()
     let idx = ingredientList.indexOf(ingredient)
-    console.log(chip)
     if (idx > -1) { // only splice of found value; if not, remove chip and assume it no longer exists in storage
         ingredientList.splice(idx, 1)
     }
@@ -105,7 +104,7 @@ function resetEventListeners() {
      document.getElementById('submit').onclick = function() {
         let ingredients = sessionStorage.getItem("ingredients");
         if (!(ingredients == [])) {
-            console.log($.ajax({
+            $.ajax({
                 type: "POST",
                 url: "/",
                 data: JSON.stringify(ingredients),
@@ -117,7 +116,7 @@ function resetEventListeners() {
                     // update ingredient chips
                     let chips = document.querySelector('#chips')
                     chips.childNodes.forEach(e => {
-                        if(e.nodeName != '#text' && e.nodeName != '#comment'){
+                        if(e.nodeName != '#text' && e.nodeName != '#comment'){ // ignore whitespace and comments
                             btn = e.querySelector('button')
                             setupRemoveChipBtn(btn)
                         }
@@ -125,7 +124,7 @@ function resetEventListeners() {
                         resetEventListeners()
                     })
                 }
-            }));
+            });
         } else {
             alert("Please add at least one ingredient.")
         }
