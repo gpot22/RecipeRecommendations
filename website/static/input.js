@@ -97,26 +97,26 @@ function resetEventListeners() {
     })
      // send ingredients from sessionStorage to backend on button press
      document.getElementById('submit').onclick = function() {
-        let resultsDiv = document.getElementById('results')
         let ingredients = sessionStorage.getItem("ingredients");
         console.log($.ajax({
             type: "POST",
             url: "/",
             data: JSON.stringify(ingredients),
             contentType: "application/json; charset=utf-8",
-            // dataType: "json",
-            success: function(text) {
-                // alert(text)
-                document.documentElement.innerHTML = text
+            // successful ajax request-response
+            success: function(resp) {
+                // render html to window
+                document.documentElement.innerHTML = resp
+                // update ingredient chips
                 let chips = document.querySelector('#chips')
                 chips.childNodes.forEach(e => {
-                    if(e.nodeName != '#text' && e.nodeName != '#comment'){
-                        console.log(e)
+                    if(e.nodeName != '#text' && e.nodeName != '#comment'){  // ignore whitespace and comments
                         btn = e.querySelector('button')
                         setupRemoveChipBtn(btn)
                     }
-                    resetEventListeners()
                 })
+                // reset event listeners
+                resetEventListeners()
             }
           }));
      };
