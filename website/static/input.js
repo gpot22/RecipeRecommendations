@@ -77,3 +77,14 @@ function removeIngredient(chip) {
 function removeIngredientChip(chip) {
     chip.remove()
 }
+
+document.getElementById('submit').onclick = function() {
+    let ingredients = sessionStorage.getItem("ingredients");
+    $.ajax({
+        type: "POST",
+        url: "/results",
+        data: JSON.stringify(ingredients),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+      });
+ };
