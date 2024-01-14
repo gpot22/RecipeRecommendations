@@ -7,19 +7,16 @@
     {% for recipe in recipes %}
     <div class="card mb-2 shadow">
         <div class="card-body">
-            <a href="http://{{recipe.link}}" class="card-title recipe-title" ><i class="fa-solid fa-cutlery me-3"></i>{{recipe.name}}</a>
+            <a href="http://{{recipe.link}}" target="_blank" class="card-title recipe-title" ><i class="fa-solid fa-cutlery me-3"></i>{{recipe.name}}</a>
             <hr>
             <h5 class="card-text text-primary" style="font-weight: 600;">Ingredients</h5>
             <div class="ms-4"><ul>
                 {% for i in recipe.ingredients %}<li class="card-text">{{i}}</li>{% endfor %}
             </ul></div>
-            <!-- {% for i in recipe.ingredients %}<p class="card-text">{{i}}</p>{% endfor %} -->
             <h5 class="card-text mt-2 text-primary" style="font-weight: 600;"">Instructions</h2>
                 <div class="ms-4">
                     {% for i in range(recipe.directions|length) %}<p class="card-text">{{i+1}}.&nbsp;&nbsp;&nbsp;&nbsp;{{recipe.directions[i]}}</p>{% endfor %}
                 </div>
-            <!-- {% for i in range(recipe.directions|length) %}<p class="card-text">{{i+1}}.&nbsp;&nbsp;&nbsp;&nbsp;{{recipe.directions[i]}}</p>{% endfor %} -->
-            <!-- <a href="http://{{recipe.NER}}" class="card-link">Recipe link</a> -->
         </div>
     </div>
     {% endfor %}
