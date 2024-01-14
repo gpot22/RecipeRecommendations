@@ -57,12 +57,23 @@
     flex-flow: row wrap;
     /* align-content: stretch; */
     align-items: flex-start;
-    gap: 10px;
+    justify-content:space-between;
+    /* gap: 10px; */
+}
+
+@keyframes fadeIn {
+    0% { 
+        opacity: 0; 
+    }
+    100% { 
+        opacity: 1; 
+    }
 }
 
 .card {
     max-width: 45vw;
     flex-grow: 1;
+    animation: fadeIn 0.7s ease-in
 }
 
 .padd {
@@ -88,4 +99,27 @@
 #page-logo.anim {
     animation-name: hop;
     animation-duration: 0.8s;
+}
+
+#submit {
+    font-weight: bold;
+    transition: 200ms;
+}
+
+#submit:active {
+    transition: 200ms;
+    transform: translateY(10%);
+}
+@keyframes fadeInSlide {
+    0% { 
+        opacity: 0; 
+        transform: translateX(-10%);
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateX(0%);
+    }
+}
+.fade-in-div * {
+    animation: fadeInSlide 1s
 }

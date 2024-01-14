@@ -17,5 +17,5 @@ def update_recipes():
             ingredients = ast.literal_eval(ingredients)
             print(ingredients)
         recipes = supabase.table("recipe2").select('*').contains('NER', ingredients).execute().data # return dish object(s) based on ingredients
-        return render_template("home.html",recipes=recipes, ingredients=ingredients)
+        return render_template("home.html",recipes=recipes, ingredients=ingredients, query=True)
     

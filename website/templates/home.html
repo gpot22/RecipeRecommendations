@@ -16,5 +16,12 @@
         </div>
     </div>
     {% endfor %}
+    <!-- No recipes found -->
+    {% if query and not recipes%}
+    <div class="fade-in-div">
+        <h5 class="d-block" style="font-weight: bold">Hey&#128075;</h5>
+        <span class="d-block" >We couldn't find any recipes that match your ingredients... Try changing your ingredient list to plan your next meal with us!</span>    
+    </div>
+   {% endif %}
 </div>
 {% endblock %}

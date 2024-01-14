@@ -18,7 +18,9 @@ function addIngredient(inputBox) {
     let ingredient = inputBox.value.trim()
     if(!ingredient) return; 
     let ingredientList = getIngredientList();
-    if(ingredientList.includes(ingredient)) return; 
+    if(ingredientList.includes(ingredient)){
+        return alert('Ingredient already listed!')
+    } 
     
     // add input to session storage ingredient list
     ingredientList.push(ingredient)
