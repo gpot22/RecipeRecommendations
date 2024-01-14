@@ -35,16 +35,19 @@ function addIngredient(inputBox) {
 
 function addIngredientChip(ingredient) {
     let chipsDiv = document.querySelector('#chips')
+    // template chip html
     let chipInnerHTML = `
         <span>${ingredient}</span>
         <button class="chip-x" aria-label="Remove tag"><i class="fa-solid fa-x fa-xs"></i></button>
     `
+    // create chip from template html
     let chip = document.createElement('div')
     chip.classList.add('chip')
     chip.innerHTML = chipInnerHTML
-
+    // add functionality to remove button in chip
     let removeBtn = chip.querySelector('button')
     setupRemoveChipBtn(removeBtn)
+    // add chip to DOM
     chipsDiv.appendChild(chip)
 }
 
