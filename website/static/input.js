@@ -1,9 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     let inputBox = document.querySelector('#search')  // get input box element
     let addIngredientBtn = document.querySelector('#add-ingredient')  // get add ingredient button element
+    let pageLogo = document.querySelector('#page-logo')
     // Add ingredient on button press
     addIngredientBtn.addEventListener('click', () => {
         addIngredient(inputBox)
+        // animate logo
+        pageLogo.classList.remove('anim')
+        void pageLogo.offsetWidth;
+        pageLogo.classList.add('anim')
     })
 
     // Add ingredient by clicking enter on keyboard

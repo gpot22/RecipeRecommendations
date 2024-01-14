@@ -1,4 +1,5 @@
 .welcome {
+    position: relative;
     font-size: 52px;
     padding: 30px 50px;
     font-weight: bold;
@@ -66,4 +67,26 @@
 
 .padd {
     height: 100px;
+}
+
+#page-logo {
+    top:50%;
+    transform: translateY(-50%);
+    /* animation-name: hop; */
+}
+
+@keyframes hop {
+    0% {
+        transform: translateY(-50%);
+    }
+    40% {
+        transform: translateY(-80%);
+    }
+    100% {
+        transform: translateY(-50%)
+    }
+}
+#page-logo.anim {
+    animation-name: hop;
+    animation-duration: 0.8s;
 }
