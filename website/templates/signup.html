@@ -3,13 +3,19 @@
 {% block title %}Re:Recipes Signup{% endblock %}
 
 {% block navlinks %}
+{% if user.is_authenticated %}
 <a class="nav-link nav-item" id="home" href="/">Home</a>
-<a class="nav-link nav-item active" id="signUp" href="/sign-up">Sign Up</a>
-<a class="nav-link nav-item" id="login" href="/login">Login</a>
+<a class="nav-link nav-item" id="profile" href="/profile">Profile</a>
 <a class="nav-link nav-item" id="logout" href="/logout">Logout</a>
+{% else %}
+<a class="nav-link nav-item" id="home" href="/">Home</a>
+<a class="nav-link nav-item" id="login" href="/login">Login</a>
+<a class="nav-link nav-item active" id="signUp" href="/sign-up">Sign Up</a>
+{% endif %}
 {% endblock %}
 
-{% block header %} Signup {% endblock %}
+
+{% block header %} Re:Recipes Signup {% endblock %}
 
 {% block content %}
 <form method="POST">
