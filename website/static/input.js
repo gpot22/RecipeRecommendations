@@ -17,8 +17,10 @@ function addIngredient(inputBox) {
     // validate input
     let ingredients = inputBox.value.split(',')
     ingredients = ingredients.map(function(s) { 
-        s = s.trim(); 
-        return s;
+        s = s.trim();
+        return s
+    }).filter(function(s) {
+        return s.length > 0
     });
     if(ingredients == ['']) return alert('No ingredients received!');
     let ingredientList = getIngredientList();
